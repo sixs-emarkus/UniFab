@@ -1,0 +1,1143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="dsARForm">
+      <DataSourceReference>/Production/reports/SharedReportDataSource</DataSourceReference>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>a07ef294-1ea3-4958-8571-1d86045415e3</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="InvcHeadCustomer">
+      <Query>
+        <DataSourceName>dsARForm</DataSourceName>
+        <CommandText>="SELECT T1.Company,T1.InvoiceType,T1.PONum,T1.Calc_CustFax,T1.Calc_DteOrdrd,T1.Calc_fFOB,T1.Calc_MulPackNum,T1.Calc_mulponum,T1.Calc_MulShipDate,T1.Calc_MulShipVia,T1.Calc_MultTaxID,T1.Calc_PackNum,T1.Calc_DropShipPackSlip,T1.Calc_SalesPerson,T1.Calc_SalesTerms,T1.Calc_ShipDate,T1.Calc_ShipVia, T1.Customer_PhoneNum, T2.EMailAddress,T2.FaxNum,T2.ResaleID,T2.Calc_InvoiceNum,T3.RptLiteralsLOrdered as Label_Calc_DteOrdrd,T3.RptLiteralsLSalsRep as Label_Calc_SalesPerson,T3.RptLiteralsLTrms as Label_Calc_SalesTerms,T3.RptLiteralsLAUTxID,T3.RptLiteralsLFax,T3.RptLiteralsLEMaila,T3.RptLiteralsLFOB,T3.RptLiteralsLPackSlp,T3.RptLiteralsLPONum,T3.RptLiteralsLSeeBelow,T3.RptLiteralsLSlsTxID,T3.RptLiteralsLShpVia,T3.ShipDate as Label_ShipDate,T1.Calc_CustEMailAddress
+ FROM InvcHead_" + Parameters!TableGuid.Value + " T1
+ LEFT OUTER JOIN Customer_" + Parameters!TableGuid.Value + " T2
+  ON T1.Company = T2.Company AND T1.CustNum = T2.CustNum AND T1.InvoiceNum = T2.Calc_InvoiceNum
+ LEFT OUTER JOIN RptLabels_" + Parameters!TableGuid.Value + " T3
+  ON T1.RptLanguageID = T3.RptLanguageID "</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="InvoiceType">
+          <DataField>InvoiceType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Company">
+          <DataField>Company</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="PONum">
+          <DataField>PONum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_DteOrdrd">
+          <DataField>Calc_DteOrdrd</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Calc_CustFax">
+          <DataField>Calc_CustFax</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_fFOB">
+          <DataField>Calc_fFOB</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_MulPackNum">
+          <DataField>Calc_MulPackNum</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Calc_mulponum">
+          <DataField>Calc_mulponum</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Calc_MulShipVia">
+          <DataField>Calc_MulShipVia</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Calc_MultTaxID">
+          <DataField>Calc_MultTaxID</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Calc_PackNum">
+          <DataField>Calc_PackNum</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Calc_MulShipDate">
+          <DataField>Calc_MulShipDate</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Calc_SalesPerson">
+          <DataField>Calc_SalesPerson</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_SalesTerms">
+          <DataField>Calc_SalesTerms</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_ShipDate">
+          <DataField>Calc_ShipDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Calc_ShipVia">
+          <DataField>Calc_ShipVia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="EMailAddress">
+          <DataField>EMailAddress</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="FaxNum">
+          <DataField>FaxNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ResaleID">
+          <DataField>ResaleID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_InvoiceNum">
+          <DataField>Calc_InvoiceNum</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLFax">
+          <DataField>RptLiteralsLFax</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLEMaila">
+          <DataField>RptLiteralsLEMaila</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLPONum">
+          <DataField>RptLiteralsLPONum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Label_Calc_SalesPerson">
+          <DataField>Label_Calc_SalesPerson</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLAUTxID">
+          <DataField>RptLiteralsLAUTxID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLPackSlp">
+          <DataField>RptLiteralsLPackSlp</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Label_Calc_SalesTerms">
+          <DataField>Label_Calc_SalesTerms</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLFOB">
+          <DataField>RptLiteralsLFOB</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLShpVia">
+          <DataField>RptLiteralsLShpVia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Label_ShipDate">
+          <DataField>Label_ShipDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLSeeBelow">
+          <DataField>RptLiteralsLSeeBelow</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Label_Calc_DteOrdrd">
+          <DataField>Label_Calc_DteOrdrd</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLSlsTxID">
+          <DataField>RptLiteralsLSlsTxID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_DropShipPackSlip">
+          <DataField>Calc_DropShipPackSlip</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="Calc_CustEMailAddress">
+          <DataField>Calc_CustEMailAddress</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="Customer_PhoneNum">
+          <DataField>Customer_PhoneNum</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+      </Fields>
+      <Filters>
+        <Filter>
+          <FilterExpression>=Fields!Company.Value</FilterExpression>
+          <Operator>Equal</Operator>
+          <FilterValues>
+            <FilterValue>=Parameters!Company.Value</FilterValue>
+          </FilterValues>
+        </Filter>
+        <Filter>
+          <FilterExpression>=Fields!Calc_InvoiceNum.Value</FilterExpression>
+          <Operator>Equal</Operator>
+          <FilterValues>
+            <FilterValue>=Parameters!InvoiceNum.Value</FilterValue>
+          </FilterValues>
+        </Filter>
+      </Filters>
+    </DataSet>
+    <DataSet Name="Company">
+      <Query>
+        <DataSourceName>dsARForm</DataSourceName>
+        <CommandText>="SELECT T1.Calc_Localization
+ FROM Company_" + Parameters!TableGuid.Value + " T1"</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="Calc_Localization">
+          <DataField>Calc_Localization</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Tablix1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>7.5in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.47792in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle2">
+                          <ReportItems>
+                            <Textbox Name="LblFax">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=iif( string.IsNullOrEmpty( Fields!Calc_CustFax.Value ), "", First(Fields!RptLiteralsLFax.Value, "InvcHeadCustomer") )</Value>
+                                      <Style>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.04in</Top>
+                              <Left>1.51917in</Left>
+                              <Height>0.17in</Height>
+                              <Width>0.40833in</Width>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="TxtFax">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Calc_CustFax.Value</Value>
+                                      <Style>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.04in</Top>
+                              <Left>1.95528in</Left>
+                              <Height>0.17in</Height>
+                              <Width>0.95972in</Width>
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="LblMail">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=iif( string.IsNullOrEmpty( Fields!EMailAddress.Value ), "", First(Fields!RptLiteralsLEMaila.Value, "InvcHeadCustomer") )</Value>
+                                      <Style>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.04in</Top>
+                              <Left>3.38in</Left>
+                              <Height>0.17in</Height>
+                              <Width>0.56in</Width>
+                              <ZIndex>2</ZIndex>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="TxtEmailAddress">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Calc_CustEMailAddress.Value</Value>
+                                      <Style>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.04in</Top>
+                              <Left>3.98in</Left>
+                              <Height>0.17in</Height>
+                              <Width>3.37in</Width>
+                              <ZIndex>3</ZIndex>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="RptLiteralsLEMaila2">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=code.obj.DataTable_AddNewRows(Fields!ResaleID.Value,Fields!Calc_InvoiceNum.Value)</Value>
+                                      <Style>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Normal</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>RptLiteralsLEMaila1</rd:DefaultName>
+                              <Top>0.04in</Top>
+                              <Left>3in</Left>
+                              <Height>0.17in</Height>
+                              <Width>0.2in</Width>
+                              <ZIndex>4</ZIndex>
+                              <Visibility>
+                                <Hidden>true</Hidden>
+                              </Visibility>
+                              <Style>
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="LblPhone">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>="Phone: "</Value>
+                                      <Style>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.04in</Top>
+                              <Left>0.04in</Left>
+                              <Height>0.17in</Height>
+                              <Width>0.47083in</Width>
+                              <ZIndex>5</ZIndex>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="Customer_PhoneNum">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=First(Fields!Customer_PhoneNum.Value, "InvcHeadCustomer")</Value>
+                                      <Style>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>Customer_PhoneNum</rd:DefaultName>
+                              <Top>0.04in</Top>
+                              <Left>0.58028in</Left>
+                              <Height>0.17in</Height>
+                              <Width>0.88333in</Width>
+                              <ZIndex>6</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="EMailAddress">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=First(Fields!EMailAddress.Value)</Value>
+                                      <Style>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <rd:DefaultName>EMailAddress</rd:DefaultName>
+                              <Top>0.22389in</Top>
+                              <Left>3.94in</Left>
+                              <Height>0.22625in</Height>
+                              <Width>3.41in</Width>
+                              <ZIndex>7</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Rectangle>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6975in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle1">
+                          <ReportItems>
+                            <Rectangle Name="Rectangle3">
+                              <ReportItems>
+                                <Textbox Name="LblPONUM">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=First(Fields!RptLiteralsLPONum.Value, "InvcHeadCustomer") &amp; ":"</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Right</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.05in</Top>
+                                  <Left>0.02in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>0.95in</Width>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtPoNum">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=iif(Fields!Calc_mulponum.Value, "See Below", Fields!PONum.Value)</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.05in</Top>
+                                  <Left>1in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>1.79in</Width>
+                                  <ZIndex>1</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="LblSalesPerson">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=First(Fields!Label_Calc_SalesPerson.Value, "InvcHeadCustomer")</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Right</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.25in</Top>
+                                  <Left>0.02in</Left>
+                                  <Height>0.16in</Height>
+                                  <Width>0.95in</Width>
+                                  <ZIndex>2</ZIndex>
+                                  <Style>
+                                    <Border />
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="LblPackSlp">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=iif((Fields!Calc_MulPackNum.Value = False and (Fields!Calc_PackNum.Value &lt;&gt; 0 or Fields!Calc_DropShipPackSlip.Value &lt;&gt; "")) or Fields!Calc_MulPackNum.Value = True, 
+		First(Fields!RptLiteralsLPackSlp.Value, "InvcHeadCustomer") &amp; ":",	"")</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Right</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.42in</Top>
+                                  <Left>0.02in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>0.95in</Width>
+                                  <ZIndex>3</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtSalesPerson">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!Calc_SalesPerson.Value</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.25in</Top>
+                                  <Left>1in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>2.17in</Width>
+                                  <ZIndex>4</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtPackNum">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=iif(Fields!Calc_MulPackNum.Value = false and (Fields!Calc_PackNum.Value &lt;&gt; 0 or Fields!Calc_DropShipPackSlip.Value &lt;&gt; ""),
+		iif( Fields!Calc_PackNum.Value &lt;&gt; 0, CStr(Fields!Calc_PackNum.Value), Fields!Calc_DropShipPackSlip.Value),
+		iif(Fields!Calc_MulPackNum.Value,"See Below",	""			))</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontWeight>Bold</FontWeight>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.42in</Top>
+                                  <Left>1in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>1.67in</Width>
+                                  <ZIndex>5</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="LblSalesTerms">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=iif( string.IsNullOrEmpty( Fields!Calc_SalesTerms.Value ), "", (First(Fields!Label_Calc_SalesTerms.Value, "InvcHeadCustomer")) )</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Right</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.05in</Top>
+                                  <Left>2.86792in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>1.05208in</Width>
+                                  <ZIndex>6</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="LblDteOrdrd">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=iif( string.IsNullOrEmpty( Fields!Calc_DteOrdrd.Value ), "", First(Fields!Label_Calc_DteOrdrd.Value, "InvcHeadCustomer") )</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Right</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.25in</Top>
+                                  <Left>3.27in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>0.65in</Width>
+                                  <ZIndex>7</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="LblSlsTxID">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=iif((string.IsNullOrEmpty(iif(Fields!Calc_MultTaxID.Value = False, Fields!ResaleID.Value, "(SEE BELOW)"))),"",iif( First( Fields!Calc_Localization.Value, "Company" ) &lt;&gt; "AU",
+	  First( Fields!RptLiteralsLSlsTxID.Value, "InvcHeadCustomer" ) &amp; ":"
+		  ,
+	  First( Fields!RptLiteralsLAUTxID.Value, "InvcHeadCustomer" )
+	 ))</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Right</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.42in</Top>
+                                  <Left>2.67in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>1.25in</Width>
+                                  <ZIndex>8</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtSalesTerms">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!Calc_SalesTerms.Value</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontWeight>Bold</FontWeight>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.05in</Top>
+                                  <Left>3.98in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>1.34in</Width>
+                                  <ZIndex>9</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtDteOrdrd">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=iif(isnothing(Fields!Calc_DteOrdrd.Value), "", FormatDateTime(Fields!Calc_DteOrdrd.Value,2))</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.25in</Top>
+                                  <Left>3.98in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>0.76in</Width>
+                                  <ZIndex>10</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtMultTaxID">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=iif(Fields!Calc_MultTaxID.Value = False, Fields!ResaleID.Value, "(SEE BELOW)")</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.42in</Top>
+                                  <Left>3.98in</Left>
+                                  <Height>0.16in</Height>
+                                  <Width>1.34in</Width>
+                                  <ZIndex>11</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="LblFOB">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=iif( string.IsNullOrEmpty( Fields!Calc_fFOB.Value ), "", (First(Fields!RptLiteralsLFOB.Value, "InvcHeadCustomer") &amp; ":") )</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Right</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.05in</Top>
+                                  <Left>5.39in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>0.75in</Width>
+                                  <ZIndex>12</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="LblShpVia">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=iif( string.IsNullOrEmpty(iif(UCase(Fields!InvoiceType.Value) = "SHP" or UCase(Fields!InvoiceType.Value) = "MIS", 
+iif(Fields!Calc_MulShipVia.Value, "See Below", Fields!Calc_ShipVia.Value),"") ), "", (First(Fields!RptLiteralsLShpVia.Value, "InvcHeadCustomer") &amp; ":") )</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Right</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.25in</Top>
+                                  <Left>5.51in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>0.63in</Width>
+                                  <ZIndex>13</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="LblShipDate">
+                                  <CanGrow>true</CanGrow>
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=First(Fields!Label_ShipDate.Value, "InvcHeadCustomer") &amp; ":"</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Right</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.42in</Top>
+                                  <Left>5.35in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>0.79in</Width>
+                                  <ZIndex>14</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtfFob">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!Calc_fFOB.Value</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.05in</Top>
+                                  <Left>6.2in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>1.21in</Width>
+                                  <ZIndex>15</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtMulShipVia">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=iif(UCase(Fields!InvoiceType.Value) = "SHP" or UCase(Fields!InvoiceType.Value) = "MIS", 
+iif(Fields!Calc_MulShipVia.Value, "See Below", Fields!Calc_ShipVia.Value),"")</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.25in</Top>
+                                  <Left>6.2in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>1.19in</Width>
+                                  <ZIndex>16</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtSeeBelow">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=iif(Fields!Calc_MulShipDate.Value = False, 
+iif(isnothing(Fields!Calc_ShipDate.Value), "", FormatDateTime(Fields!Calc_ShipDate.Value,2)), 
+First(Fields!RptLiteralsLSeeBelow.Value, "InvcHeadCustomer"))</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.42in</Top>
+                                  <Left>6.2in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>1.19in</Width>
+                                  <ZIndex>17</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                              </ReportItems>
+                              <KeepTogether>true</KeepTogether>
+                              <Left>0.02in</Left>
+                              <Height>0.6975in</Height>
+                              <Width>7.45in</Width>
+                              <Style>
+                                <Border>
+                                  <Color>Silver</Color>
+                                  <Style>Solid</Style>
+                                  <Width>1.5pt</Width>
+                                </Border>
+                              </Style>
+                            </Rectangle>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Rectangle>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.03125in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value />
+                                  <Style>
+                                    <FontFamily>Arial Unicode MS</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox2</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Group1">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Calc_InvoiceNum.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!Calc_InvoiceNum.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixMembers>
+                    <TablixMember>
+                      <KeepWithGroup>After</KeepWithGroup>
+                    </TablixMember>
+                    <TablixMember>
+                      <KeepWithGroup>After</KeepWithGroup>
+                    </TablixMember>
+                    <TablixMember>
+                      <Group Name="Details" />
+                      <Visibility>
+                        <Hidden>true</Hidden>
+                      </Visibility>
+                    </TablixMember>
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>InvcHeadCustomer</DataSetName>
+            <Height>1.20667in</Height>
+            <Width>7.5in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>1.31083in</Height>
+        <Style />
+      </Body>
+      <Width>7.5in</Width>
+      <Page>
+        <LeftMargin>0.5in</LeftMargin>
+        <RightMargin>0.5in</RightMargin>
+        <TopMargin>0.5in</TopMargin>
+        <BottomMargin>0.5in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="TableGuid">
+      <DataType>String</DataType>
+      <Prompt>TableGuid</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Company">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true" />
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Company</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="InvoiceNum">
+      <DataType>Integer</DataType>
+      <Prompt>InvoiceNum</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>2</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>TableGuid</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>Company</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>InvoiceNum</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <Language>=User!Language</Language>
+  <CodeModules>
+    <CodeModule>CLSEpicor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</CodeModule>
+  </CodeModules>
+  <Classes>
+    <Class>
+      <ClassName>CLSEpicor.ReportFunctions.ARForm</ClassName>
+      <InstanceName>obj</InstanceName>
+    </Class>
+  </Classes>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportServerUrl>http://localhost/ReportServer</rd:ReportServerUrl>
+  <rd:ReportID>0adc1d67-3543-46bb-aaec-48047826fda2</rd:ReportID>
+</Report>

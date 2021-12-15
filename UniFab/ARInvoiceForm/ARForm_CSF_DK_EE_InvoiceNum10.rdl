@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="dsARForm">
+      <DataSourceReference>/ERP101Production/reports/SharedReportDataSource</DataSourceReference>
+      <rd:SecurityType>Windows</rd:SecurityType>
+      <rd:DataSourceID>f66623f7-56b7-4566-bd87-6e23bf5be947</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="InvcHead">
+      <Query>
+        <DataSourceName>dsARForm</DataSourceName>
+        <CommandText>="SELECT T1.Company,T1.CustNum,T1.DocInvoiceAmt,T1.DocRounding,T1.InvoiceNum,T1.CurrencyCode_DecimalsGeneral,T1.Calc_CurSymbol,T1.Calc_SEBankRef,T2.Calc_SEBankRef as Label_Calc_SEBankRef,T2.RptLiteralsLRounding,T2.RptLiteralsLTotal
+ FROM InvcHead_" + Parameters!TableGuid.Value + " T1
+ LEFT OUTER JOIN RptLabels_" + Parameters!TableGuid.Value + " T2
+  ON T1.RptLanguageID = T2.RptLanguageID"</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="Company">
+          <DataField>Company</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceNum">
+          <DataField>InvoiceNum</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="CustNum">
+          <DataField>CustNum</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DocInvoiceAmt">
+          <DataField>DocInvoiceAmt</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DocRounding">
+          <DataField>DocRounding</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Calc_SEBankRef">
+          <DataField>Calc_SEBankRef</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CurrencyCode_DecimalsGeneral">
+          <DataField>CurrencyCode_DecimalsGeneral</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Calc_CurSymbol">
+          <DataField>Calc_CurSymbol</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Label_Calc_SEBankRef">
+          <DataField>Label_Calc_SEBankRef</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLRounding">
+          <DataField>RptLiteralsLRounding</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLTotal">
+          <DataField>RptLiteralsLTotal</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Filters>
+        <Filter>
+          <FilterExpression>=Fields!InvoiceNum.Value</FilterExpression>
+          <Operator>Equal</Operator>
+          <FilterValues>
+            <FilterValue>=Parameters!InvoiceNum.Value</FilterValue>
+          </FilterValues>
+        </Filter>
+      </Filters>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="table1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>7.5in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.77263in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle5">
+                          <ReportItems>
+                            <Textbox Name="LblRounding">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=iif(Fields!DocRounding.Value &lt;&gt; 0, First(Fields!RptLiteralsLRounding.Value, "InvcHead"), "")</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.01in</Top>
+                              <Left>4.8in</Left>
+                              <Height>0.17in</Height>
+                              <Width>0.84in</Width>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="TxtDocRounding">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=iif(Fields!DocRounding.Value = 0, "", FormatNumber(Fields!DocRounding.Value, Fields!CurrencyCode_DecimalsGeneral.Value))</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.01in</Top>
+                              <Left>5.68in</Left>
+                              <Height>0.17in</Height>
+                              <Width>1.41in</Width>
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="LblCurSymbol">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=iif(Fields!DocRounding.Value &lt;&gt; 0, Fields!Calc_CurSymbol.Value, "")</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Left</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.01in</Top>
+                              <Left>7.15in</Left>
+                              <Height>0.17in</Height>
+                              <Width>0.33in</Width>
+                              <ZIndex>2</ZIndex>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                            <Rectangle Name="Rectangle6">
+                              <ReportItems>
+                                <Textbox Name="LblTotal">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=First(Fields!RptLiteralsLTotal.Value, "InvcHead") &amp; ":"</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                            <FontWeight>Bold</FontWeight>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Right</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.02in</Top>
+                                  <Height>0.17in</Height>
+                                  <Width>0.59in</Width>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtDocInvoiceAmt">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=FormatNumber(Fields!DocInvoiceAmt.Value,Fields!CurrencyCode_DecimalsGeneral.Value)</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                            <FontWeight>Bold</FontWeight>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Right</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.02in</Top>
+                                  <Left>0.59in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>1.45in</Width>
+                                  <ZIndex>1</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="LblCursymbol">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!Calc_CurSymbol.Value</Value>
+                                          <Style>
+                                            <FontStyle>Italic</FontStyle>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Left</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.02in</Top>
+                                  <Left>2.09in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>0.33in</Width>
+                                  <ZIndex>2</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                              </ReportItems>
+                              <KeepTogether>true</KeepTogether>
+                              <Top>0.205in</Top>
+                              <Left>5.05in</Left>
+                              <Height>0.21in</Height>
+                              <Width>2.45in</Width>
+                              <ZIndex>3</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Color>Gray</Color>
+                                  <Style>Solid</Style>
+                                </Border>
+                              </Style>
+                            </Rectangle>
+                            <Rectangle Name="Rectangle8">
+                              <ReportItems>
+                                <Subreport Name="Subreport9">
+                                  <ReportName>ARForm_MultiPayment_Details</ReportName>
+                                  <Parameters>
+                                    <Parameter Name="TableGuid">
+                                      <Value>=Parameters!TableGuid.Value</Value>
+                                    </Parameter>
+                                    <Parameter Name="Pm_INVCHEAD_Company">
+                                      <Value>=Fields!Company.Value</Value>
+                                    </Parameter>
+                                    <Parameter Name="Pm_INVCHEAD_CustNum">
+                                      <Value>=Fields!CustNum.Value</Value>
+                                    </Parameter>
+                                    <Parameter Name="Pm_INVCHEAD_InvoiceNum">
+                                      <Value>=Fields!InvoiceNum.Value</Value>
+                                    </Parameter>
+                                  </Parameters>
+                                  <Height>0.55111in</Height>
+                                  <Width>2.72in</Width>
+                                  <Style>
+                                    <Border>
+                                      <Style>None</Style>
+                                    </Border>
+                                  </Style>
+                                </Subreport>
+                              </ReportItems>
+                              <KeepTogether>true</KeepTogether>
+                              <Top>0.18in</Top>
+                              <Left>0.55in</Left>
+                              <Height>0.55111in</Height>
+                              <Width>2.75in</Width>
+                              <ZIndex>4</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                              </Style>
+                            </Rectangle>
+                            <Textbox Name="CSF_DK_EE_txtCalc_SEBankRef1">
+                              <CanGrow>true</CanGrow>
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=Fields!Calc_SEBankRef.Value</Value>
+                                      <Style>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.52in</Top>
+                              <Left>5.64in</Left>
+                              <Height>0.23611in</Height>
+                              <Width>1.84in</Width>
+                              <ZIndex>5</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="CSF_DK_EE_lblCalc_SEBankRef">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=First(Fields!Label_Calc_SEBankRef.Value, "InvcHead")</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.52in</Top>
+                              <Left>4.1182in</Left>
+                              <Height>0.23611in</Height>
+                              <Width>1.5218in</Width>
+                              <ZIndex>6</ZIndex>
+                              <Style>
+                                <Border>
+                                  <Style>None</Style>
+                                </Border>
+                                <PaddingLeft>2pt</PaddingLeft>
+                                <PaddingRight>2pt</PaddingRight>
+                                <PaddingTop>2pt</PaddingTop>
+                                <PaddingBottom>2pt</PaddingBottom>
+                              </Style>
+                            </Textbox>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Rectangle>
+                      </CellContents>
+                    </TablixCell>
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="table1_Details_Group">
+                    <DataElementName>Detail</DataElementName>
+                  </Group>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                  <DataElementName>Detail_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>InvcHead</DataSetName>
+            <Height>0.77263in</Height>
+            <Width>7.5in</Width>
+            <Style />
+          </Tablix>
+        </ReportItems>
+        <Height>0.77263in</Height>
+        <Style />
+      </Body>
+      <Width>7.5in</Width>
+      <Page>
+        <LeftMargin>0.2in</LeftMargin>
+        <RightMargin>0.2in</RightMargin>
+        <TopMargin>0.175in</TopMargin>
+        <BottomMargin>0.05in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="TableGuid">
+      <DataType>String</DataType>
+      <Prompt>TableGuid</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="InvoiceNum">
+      <DataType>Integer</DataType>
+      <Prompt>InvoiceNum</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportServerUrl>http://localhost/ReportServer</rd:ReportServerUrl>
+  <rd:ReportID>31ebb5d1-94df-4097-9a98-468dfae26e34</rd:ReportID>
+</Report>

@@ -1,0 +1,871 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="dsARForm">
+      <DataSourceReference>/ERP101Production/reports/SharedReportDataSource</DataSourceReference>
+      <rd:SecurityType>Windows</rd:SecurityType>
+      <rd:DataSourceID>5b2f9ba1-e9bc-48e6-9d84-86898116ae0b</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="InvcDtl">
+      <Query>
+        <DataSourceName>dsARForm</DataSourceName>
+        <CommandText>="SELECT T1.CurrencyCode_DecimalsGeneral,T1.InvoiceNum, T2.PartNum,T2.SalesUM,T2.Calc_InvoiceDisplayLine,T2.Calc_KitParentLine,T2.Calc_SerialNumber,T2.Calc_WhseCode,T2.OrderLine_DisplaySeq,T2.OrderLine_KitFlag,T2.OrderLine_KitQtyPer,T2.PartNum_PartDescription,T2.InvoiceNum as InvcDtl_InvoiceNum,T2.PackNum,T2.DocUnitPrice,T2.DocExtPrice,T3.RptLiteralsLKitComponents,T3.RptLiteralsLPartNum,T3.DisplaySeq as Label_DisplaySeq ,T3.RptLiteralsLDescription,T3.RptLiteralsLQtyPerParent,T3.RptLiteralsLWarehouse,T3.UnitPrice as RptLiteralsLUnitPrice,T3.RptLiteralsLExtPrice,T3.Calc_SerialNumber as Label_Calc_SerialNumber
+ FROM InvcHead_" + Parameters!TableGuid.Value + " T1
+ LEFT OUTER JOIN InvcDtl_" + Parameters!TableGuid.Value + " T2
+  ON T1.Company = T2.Company AND T1.InvoiceNum = T2.InvoiceNum
+ LEFT OUTER JOIN RptLabels_" + Parameters!TableGuid.Value + " T3
+  ON T1.RptLanguageID = T3.RptLanguageID"</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="CurrencyCode_DecimalsGeneral">
+          <DataField>CurrencyCode_DecimalsGeneral</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="PartNum">
+          <DataField>PartNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SalesUM">
+          <DataField>SalesUM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_InvoiceDisplayLine">
+          <DataField>Calc_InvoiceDisplayLine</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Calc_KitParentLine">
+          <DataField>Calc_KitParentLine</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="Calc_SerialNumber">
+          <DataField>Calc_SerialNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_WhseCode">
+          <DataField>Calc_WhseCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OrderLine_DisplaySeq">
+          <DataField>OrderLine_DisplaySeq</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="OrderLine_KitFlag">
+          <DataField>OrderLine_KitFlag</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="OrderLine_KitQtyPer">
+          <DataField>OrderLine_KitQtyPer</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="PartNum_PartDescription">
+          <DataField>PartNum_PartDescription</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceNum">
+          <DataField>InvoiceNum</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="PackNum">
+          <DataField>PackNum</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="DocUnitPrice">
+          <DataField>DocUnitPrice</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="DocExtPrice">
+          <DataField>DocExtPrice</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsLKitComponents">
+          <DataField>RptLiteralsLKitComponents</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLPartNum">
+          <DataField>RptLiteralsLPartNum</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Label_DisplaySeq">
+          <DataField>Label_DisplaySeq</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLDescription">
+          <DataField>RptLiteralsLDescription</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLQtyPerParent">
+          <DataField>RptLiteralsLQtyPerParent</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLWarehouse">
+          <DataField>RptLiteralsLWarehouse</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Label_Calc_SerialNumber">
+          <DataField>Label_Calc_SerialNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RptLiteralsLUnitPrice">
+          <DataField>RptLiteralsLUnitPrice</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="RptLiteralsLExtPrice">
+          <DataField>RptLiteralsLExtPrice</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+      </Fields>
+      <Filters>
+        <Filter>
+          <FilterExpression>=Fields!OrderLine_KitFlag.Value</FilterExpression>
+          <Operator>Equal</Operator>
+          <FilterValues>
+            <FilterValue>="C"</FilterValue>
+          </FilterValues>
+        </Filter>
+        <Filter>
+          <FilterExpression>=Fields!InvoiceNum.Value</FilterExpression>
+          <Operator>Equal</Operator>
+          <FilterValues>
+            <FilterValue>=Parameters!Pm_INVCHEAD_InvoiceNum.Value</FilterValue>
+          </FilterValues>
+        </Filter>
+        <Filter>
+          <FilterExpression>=Fields!PackNum.Value</FilterExpression>
+          <Operator>Equal</Operator>
+          <FilterValues>
+            <FilterValue>=Parameters!Pm_INVCDTL_PackNum.Value</FilterValue>
+          </FilterValues>
+        </Filter>
+        <Filter>
+          <FilterExpression>=Fields!Calc_KitParentLine.Value</FilterExpression>
+          <Operator>Equal</Operator>
+          <FilterValues>
+            <FilterValue>=Parameters!Pm_INVCDTL_PackLine.Value</FilterValue>
+          </FilterValues>
+        </Filter>
+      </Filters>
+    </DataSet>
+    <DataSet Name="RptParameter">
+      <Query>
+        <DataSourceName>dsARForm</DataSourceName>
+        <CommandText>="SELECT T1.DecimalsQuantity
+ FROM RptParameter_" + Parameters!TableGuid.Value + " T1"</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="DecimalsQuantity">
+          <DataField>DecimalsQuantity</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Tablix Name="Table1">
+            <TablixBody>
+              <TablixColumns>
+                <TablixColumn>
+                  <Width>1.08181in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.82181in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.76181in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.95181in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.45181in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.18097in</Width>
+                </TablixColumn>
+              </TablixColumns>
+              <TablixRows>
+                <TablixRow>
+                  <Height>0.2in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle2">
+                          <ReportItems>
+                            <Textbox Name="LblLKitComponents">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=First(Fields!RptLiteralsLKitComponents.Value, "InvcDtl")</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.04in</Top>
+                              <Left>0.56in</Left>
+                              <Height>0.16in</Height>
+                              <Width>1.88in</Width>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                          </ReportItems>
+                          <KeepTogether>true</KeepTogether>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                          </Style>
+                        </Rectangle>
+                        <ColSpan>6</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.18389in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle1">
+                          <ReportItems>
+                            <Textbox Name="LblQtyPerParent">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=First(Fields!RptLiteralsLQtyPerParent.Value, "InvcDtl")</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Center</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Left>4.00778in</Left>
+                              <Height>0.17in</Height>
+                              <Width>1.09222in</Width>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="LblWarehouse">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=First(Fields!RptLiteralsLWarehouse.Value, "InvcDtl")</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.01389in</Top>
+                              <Left>6.4in</Left>
+                              <Height>0.17in</Height>
+                              <Width>0.80917in</Width>
+                              <ZIndex>1</ZIndex>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="LblDescription">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=First(Fields!RptLiteralsLDescription.Value, "InvcDtl")</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.00389in</Top>
+                              <Left>2.26in</Left>
+                              <Height>0.17in</Height>
+                              <Width>1.72in</Width>
+                              <ZIndex>2</ZIndex>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="LblDisplaySeq">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=First(Fields!Label_DisplaySeq.Value, "InvcDtl")</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.00389in</Top>
+                              <Left>0.03in</Left>
+                              <Height>0.17in</Height>
+                              <Width>0.8in</Width>
+                              <ZIndex>3</ZIndex>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="LblPartNum">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=First(Fields!RptLiteralsLPartNum.Value, "InvcDtl")</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style />
+                                </Paragraph>
+                              </Paragraphs>
+                              <Top>0.00389in</Top>
+                              <Left>0.8in</Left>
+                              <Height>0.17in</Height>
+                              <Width>0.95in</Width>
+                              <ZIndex>4</ZIndex>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="LblWarehouse2">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=First(Fields!RptLiteralsLUnitPrice.Value, "InvcDtl")</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Left>5.16944in</Left>
+                              <Height>0.17in</Height>
+                              <Width>0.55in</Width>
+                              <ZIndex>5</ZIndex>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                            <Textbox Name="LblWarehouse3">
+                              <KeepTogether>true</KeepTogether>
+                              <Paragraphs>
+                                <Paragraph>
+                                  <TextRuns>
+                                    <TextRun>
+                                      <Value>=First(Fields!RptLiteralsLExtPrice.Value, "InvcDtl")</Value>
+                                      <Style>
+                                        <FontFamily>Arial Unicode MS</FontFamily>
+                                        <FontSize>9pt</FontSize>
+                                        <FontWeight>Bold</FontWeight>
+                                      </Style>
+                                    </TextRun>
+                                  </TextRuns>
+                                  <Style>
+                                    <TextAlign>Right</TextAlign>
+                                  </Style>
+                                </Paragraph>
+                              </Paragraphs>
+                              <Left>5.78889in</Left>
+                              <Height>0.17in</Height>
+                              <Width>0.55in</Width>
+                              <ZIndex>6</ZIndex>
+                              <Style>
+                                <Border />
+                                <BackgroundColor>White</BackgroundColor>
+                              </Style>
+                            </Textbox>
+                          </ReportItems>
+                          <DataElementOutput>ContentsOnly</DataElementOutput>
+                          <Style />
+                        </Rectangle>
+                        <ColSpan>6</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.20472in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle0">
+                          <ReportItems>
+                            <Rectangle Name="Rectangle4">
+                              <ReportItems>
+                                <Textbox Name="TxtInvoiceDisplayLine">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!Calc_InvoiceDisplayLine.Value</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Height>0.16in</Height>
+                                  <Width>0.7in</Width>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtPartNum">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!PartNum.Value</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Left>0.8in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>1.39208in</Width>
+                                  <ZIndex>1</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtPartDescription">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!PartNum_PartDescription.Value</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Left>2.26in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>1.72in</Width>
+                                  <ZIndex>2</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtOrderLineKitQtyPer">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=formatnumber(Fields!OrderLine_KitQtyPer.Value,First(Fields!DecimalsQuantity.Value, "RptParameter"))</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style>
+                                        <TextAlign>Right</TextAlign>
+                                      </Style>
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Left>4in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>0.71in</Width>
+                                  <ZIndex>3</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtSalesUM">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!SalesUM.Value</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Left>4.8in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>0.3in</Width>
+                                  <ZIndex>4</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtWhseCode">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!Calc_WhseCode.Value</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Left>6.43in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>0.75in</Width>
+                                  <ZIndex>5</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtUnitPrice">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!DocUnitPrice.Value</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                            <Format>#,0.00;(#,0.00)</Format>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Left>5.16944in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>0.55in</Width>
+                                  <ZIndex>6</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtExtPrice">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!DocExtPrice.Value</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                            <Format>#,0.00;(#,0.00)</Format>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Left>5.78889in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>0.55in</Width>
+                                  <ZIndex>7</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                              </ReportItems>
+                              <DataElementOutput>ContentsOnly</DataElementOutput>
+                              <Height>0.18in</Height>
+                              <Width>7.25in</Width>
+                              <Style />
+                            </Rectangle>
+                          </ReportItems>
+                          <DataElementOutput>ContentsOnly</DataElementOutput>
+                          <Style />
+                        </Rectangle>
+                        <ColSpan>6</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.20472in</Height>
+                  <TablixCells>
+                    <TablixCell>
+                      <CellContents>
+                        <Rectangle Name="Rectangle3">
+                          <ReportItems>
+                            <Rectangle Name="Rectangle5">
+                              <ReportItems>
+                                <Textbox Name="LblSerialNumber">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=iif(not isnothing(Fields!Calc_SerialNumber.Value), First(Fields!Label_Calc_SerialNumber.Value, "InvcDtl"), "")</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.01in</Top>
+                                  <Left>0.17in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>1.04in</Width>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                                <Textbox Name="TxtSerialNumber">
+                                  <KeepTogether>true</KeepTogether>
+                                  <Paragraphs>
+                                    <Paragraph>
+                                      <TextRuns>
+                                        <TextRun>
+                                          <Value>=Fields!Calc_SerialNumber.Value</Value>
+                                          <Style>
+                                            <FontFamily>Arial Unicode MS</FontFamily>
+                                            <FontSize>9pt</FontSize>
+                                          </Style>
+                                        </TextRun>
+                                      </TextRuns>
+                                      <Style />
+                                    </Paragraph>
+                                  </Paragraphs>
+                                  <Top>0.01in</Top>
+                                  <Left>1.5in</Left>
+                                  <Height>0.17in</Height>
+                                  <Width>5.3in</Width>
+                                  <ZIndex>1</ZIndex>
+                                  <Style>
+                                    <Border />
+                                    <BackgroundColor>White</BackgroundColor>
+                                  </Style>
+                                </Textbox>
+                              </ReportItems>
+                              <DataElementOutput>ContentsOnly</DataElementOutput>
+                              <Top>0.02472in</Top>
+                              <Height>0.18in</Height>
+                              <Width>7.25in</Width>
+                              <Style>
+                                <Border />
+                              </Style>
+                            </Rectangle>
+                          </ReportItems>
+                          <DataElementOutput>ContentsOnly</DataElementOutput>
+                          <Style>
+                            <Border />
+                          </Style>
+                        </Rectangle>
+                        <ColSpan>6</ColSpan>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+              </TablixRows>
+            </TablixBody>
+            <TablixColumnHierarchy>
+              <TablixMembers>
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+                <TablixMember />
+              </TablixMembers>
+            </TablixColumnHierarchy>
+            <TablixRowHierarchy>
+              <TablixMembers>
+                <TablixMember>
+                  <HideIfNoRows>true</HideIfNoRows>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <HideIfNoRows>true</HideIfNoRows>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
+                <TablixMember>
+                  <Group Name="Table1_Details_Group">
+                    <DataElementName>Detail</DataElementName>
+                  </Group>
+                  <TablixMembers>
+                    <TablixMember />
+                    <TablixMember>
+                      <Visibility>
+                        <Hidden>=Fields!Calc_SerialNumber.Value = nothing</Hidden>
+                      </Visibility>
+                    </TablixMember>
+                  </TablixMembers>
+                  <DataElementName>Detail_Collection</DataElementName>
+                  <DataElementOutput>Output</DataElementOutput>
+                  <KeepTogether>true</KeepTogether>
+                </TablixMember>
+              </TablixMembers>
+            </TablixRowHierarchy>
+            <DataSetName>InvcDtl</DataSetName>
+            <Height>0.79333in</Height>
+            <Width>7.25002in</Width>
+            <Style>
+              <Border>
+                <Color>Gray</Color>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Tablix>
+        </ReportItems>
+        <Height>0.8in</Height>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Body>
+      <Width>7.25002in</Width>
+      <Page>
+        <InteractiveHeight>10.44167in</InteractiveHeight>
+        <LeftMargin>0.2in</LeftMargin>
+        <RightMargin>0.2in</RightMargin>
+        <TopMargin>0.25in</TopMargin>
+        <BottomMargin>1in</BottomMargin>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="TableGuid">
+      <DataType>String</DataType>
+      <Prompt>TableGuid</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Pm_INVCDTL_PackNum">
+      <DataType>Integer</DataType>
+      <Prompt>Pm_INVCDTL_PackNum</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Pm_INVCDTL_PackLine">
+      <DataType>Integer</DataType>
+      <Prompt>Pm_INVCDTL_PackLine</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Pm_INVCHEAD_InvoiceNum">
+      <DataType>Integer</DataType>
+      <Prompt>Pm_INVCHEAD_InvoiceNum</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportServerUrl>http://localhost/ReportServer</rd:ReportServerUrl>
+  <rd:ReportID>8734696e-5de0-4174-9eb7-d612927f0756</rd:ReportID>
+</Report>
